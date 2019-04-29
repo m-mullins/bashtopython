@@ -6,7 +6,6 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-python';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -75,30 +74,30 @@ class App extends React.Component {
   };
 
   render() {
-    switch (this.state.converted) {
-      case 2:
-        return <div>
-          <Typography variant="h4" gutterBottom>Bash to Python</Typography>
+    return (<div>
+      <Typography variant="h4" gutterBottom>Bash to Python</Typography>
+      <Typography variant="body1" gutterBottom><b>Lazily</b> convert bash to python. Python scripts are Python 2 and Python 3 compatible.</Typography>
+      <Typography variant="body1" gutterBottom>This service is free.</Typography>
+      <Typography variant="body1" gutterBottom>To convert a bash script, paste the bash script below and press convert. Wait. Then finally press download to download the converted python script.</Typography>
 
-          <div style={{ display: 'flex' }}>
-            <Button style={{margin: 6}} variant="contained" color="primary" onClick={this.downloadPyFile.bind(this)}>Download Python</Button>
-            <Button style={{margin: 6}} variant="contained" onClick={this.convertMore.bind(this)}>Convert More</Button>
-          </div>
-        </div>;
-      case 1:
-        return <div>
-            <Typography variant="h4" gutterBottom>Bash to Python</Typography>
-            <CircularProgress />
-          </div>;
-      case 0:
-        return <div>
-          <Typography variant="h4" gutterBottom>Bash to Python</Typography>
+      {this.state.converted === 2 &&
+        <div style={{ display: 'flex' }}>
+          <Button style={{ margin: 6 }} variant="contained" color="primary" onClick={this.downloadPyFile.bind(this)}>Download Python</Button>
+          <Button style={{ margin: 6 }} variant="contained" onClick={this.convertMore.bind(this)}>Convert More</Button>
+        </div>}
+
+      {this.state.converted === 1 &&
+        <CircularProgress />}
+
+      {this.state.converted === 0 &&
+        <>
           <div style={{
             backgroundColor: '#eee',
             maxHeight: 450,
             overflow: 'auto',
             height: 450,
-            marginBottom: '0.92em'
+            marginTop: '1.20em',
+            marginBottom: '1.20em'
           }}>
             <Editor
               value={this.state.bashScript}
@@ -116,8 +115,9 @@ class App extends React.Component {
             />
           </div>
           <Button variant="contained" color="primary" disabled={!this.state.bashScript} onClick={this.convertScript.bind(this)}>Convert</Button>
-        </div>
-    }
+        </>
+      }
+    </div>);
   }
 }
 
