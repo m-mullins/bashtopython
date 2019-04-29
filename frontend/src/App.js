@@ -76,9 +76,9 @@ class App extends React.Component {
   render() {
     return (<div>
       <Typography variant="h4" gutterBottom>Bash to Python</Typography>
-      <Typography variant="body1" gutterBottom><b>Lazily</b> convert bash to python. Python scripts are Python 2 and Python 3 compatible.</Typography>
-      <Typography variant="body1" gutterBottom>This service is free.</Typography>
-      <Typography variant="body1" gutterBottom>To convert a bash script, paste the bash script below and press convert. Wait. Then finally press download to download the converted python script.</Typography>
+      <Typography variant="subtitle1" gutterBottom><b>Lazily</b> convert bash to python. Python scripts are Python 2 and Python 3 compatible.</Typography>
+      <Typography variant="subtitle1" gutterBottom>This service is free.</Typography>
+      <Typography variant="subtitle1" gutterBottom>To convert a bash script, paste the bash script below and press convert. Wait. Then finally press download to download the converted python script.</Typography>
 
       {this.state.converted === 2 &&
         <div style={{ display: 'flex' }}>
@@ -106,7 +106,7 @@ class App extends React.Component {
               padding={10}
               style={{
                 fontFamily: '"Fira code", "Fira Mono", monospace',
-                fontSize: 12,
+                fontSize: 14,
                 height: '100%',
                 width: '100%'
               }}

@@ -3,9 +3,9 @@
 repoPath=$(realpath $(dirname $0))
 echo "using repo path $repoPath"
 
-find $repoPath/docs | grep -vi cname | xargs -I % git rm %
+find $repoPath/docs -type f | grep -vi cname | xargs -I % git rm %
 
-cd frontend 
+cd $repoPath/frontend 
 yarn build 
 cd -
 
