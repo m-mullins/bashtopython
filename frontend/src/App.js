@@ -114,9 +114,16 @@ class App extends React.Component {
               textareaId="bashText"
             />
           </div>
-          <Button variant="contained" color="primary" disabled={!this.state.bashScript} onClick={this.convertScript.bind(this)}>Convert</Button>
+          <Button style={{
+            marginBottom: '1.20em'
+          }} variant="contained" color="primary" disabled={!this.state.bashScript} onClick={this.convertScript.bind(this)}>Convert</Button>
         </>
       }
+      <Typography variant="h4" gutterBottom>Notes</Typography>
+      <Typography variant="subtitle1" gutterBottom>There does exist <a href="https://www.swag.uwaterloo.ca/bash2py/index.html
+">bash2py</a> (a bash to python script translator), but it has many limitiations.
+      A convenient docker imaged version of <a href="https://zwischenzugs.com/2016/08/29/bash-to-python-converter">it exists.</a></Typography>
+      <Typography variant="subtitle1" gutterBottom>In most cases it is best to just manually convert a bash script to python, or start with the converted version supplied by this <a href="/">site.</a></Typography>
     </div>);
   }
 }
